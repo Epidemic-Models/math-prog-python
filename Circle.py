@@ -17,10 +17,10 @@ class Circle():
 
 
 def main():
-    circ = Circle(radius=7)
-    print("Area of the circle: ", circ.area())
-    print("Circumference of the circle is: ", circ.circumference())
-    print("Diameter of the circle is: ", circ.get_diameter())
+    circle = Circle(radius=7)
+    print("Area of the circle: ", circle.area())
+    print("Circumference of the circle is: ", circle.circumference())
+    print("Diameter of the circle is: ", circle.get_diameter())
 
 
 if __name__ == "__main__":
