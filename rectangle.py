@@ -1,5 +1,6 @@
 import math
 
+
 class Rectangle:
     def __init__(self, width, height):
         self.width = width
@@ -21,9 +22,7 @@ def main():
     print("Area of the rectangle: ", rect.area())
     print("Circumference of the rectangle is: ", rect.circumference())
     print("The length of the diagonal is: ", rect.calculate_diagonal())
+    
 
 if __name__ ==  "__main__":
     main()
-
-
-
