@@ -1,7 +1,7 @@
 import math
 
 
-class Circlecoord():
+class Circlecoord:
 
     def __init__(self, radius, c_x, c_y):
         self.radius = radius
@@ -22,9 +22,9 @@ class Circlecoord():
         return distance <= self.radius
 
     def overlaps(self, other):
-        norm = math.sqrt((self.c_x - other.c_x) ** 2 + (self.c_y - other.c_y) ** 2)
-        sum_radius = self.radius + other.radius
-        return norm < sum_radius
+        distance_center = math.sqrt((self.c_x - other.c_x) ** 2 + (self.c_y - other.c_y) ** 2)
+        sum_radii = self.radius + other.radius
+        return distance_center < sum_radii
 
 
 def main():
