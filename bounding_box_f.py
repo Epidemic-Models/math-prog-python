@@ -3,7 +3,7 @@ from rectangle import Rectangle
 
 class BoundingBoxF(Rectangle):
     def __init__(self, width: float, height: float, centre: tuple):
-        super().__init__(width, height)
+        super().__init__(width=width, height=height)
         self.centre = centre
 
     def __str__(self):
