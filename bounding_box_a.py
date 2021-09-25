@@ -1,4 +1,5 @@
 from rectangle import Rectangle
+from bounding_box import BoundingBox
 
 
 class BoundingBoxA(Rectangle):
@@ -6,16 +7,17 @@ class BoundingBoxA(Rectangle):
         super().__init__(width, height)
         self.left_upper = left_upper
         self.right_lower = right_lower
+        width = self.right_lower[0] - self.left_upper[0]
+        height = self.left_upper[1] - self.right_lower[1]
+        self.width = width
+        self.height = height
 
     def __str__(self):
         return "BoundingBoxA: left_upper=" + str(self.left_upper) +\
                ", right_lower=" + str(self.right_lower)
 
     def convert(self):
-        width = self.right_lower[0]-self.left_upper[0]
-        height = self.left_upper[1]-self.right_lower[1]
-        return "BoundingBox: left_upper=" + str(self.left_upper) + \
-               ", width=" + str(width) + ", height=" + str(height)
+        return BoundingBox(left_upper=self.left_upper, width=self.width, height=self.height)
 
 
 def main():
