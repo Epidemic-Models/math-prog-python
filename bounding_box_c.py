@@ -12,7 +12,7 @@ class BoundingBoxC(Rectangle):
                ", width=" + str(self.width) + ", height=" + str(self.height)
 
     def get_union(self, other: BoundingBoxC):
-        union_left_upper = max(self.left_upper, other.left_upper)
+        union_left_upper = min(self.left_upper[0], other.left_upper[0]), max(self.left_upper[1], other.left_upper[1])
         union_width = self.width + other.width
         union_height = self.height + other.height
         return "UnionOfBoundingBoxCandBoundingBoxC1: left_upper=" + str(union_left_upper) + \
@@ -21,7 +21,7 @@ class BoundingBoxC(Rectangle):
 
 def main():
     bounding_box_c = BoundingBoxC(width=4, height=7, left_upper=(2.0, 3.7))
-    bounding_box_c1 = BoundingBoxC(width=3, height=5, left_upper=(5.0, 32.7))
+    bounding_box_c1 = BoundingBoxC(width=3, height=5, left_upper=(5.0, 6.2))
     print(bounding_box_c)
     print(bounding_box_c.get_union(bounding_box_c1))
 
