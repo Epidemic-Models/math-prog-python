@@ -14,9 +14,11 @@ class BoundingBox(Rectangle):
 
     @property
     def right_lower(self) -> Point:
-        shift = Point(p=(self.width, self.height))
+        shift = Point(p=(self.heigth, self.width))
         self.__right_lower = self.left_upper + shift
         return self.__right_lower
+
+
 
 
 def main() -> None:
