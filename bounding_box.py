@@ -1,8 +1,9 @@
 from rectangle import Rectangle
+from point import Point
 
 
 class BoundingBox(Rectangle):
-    def __init__(self, width: float, height: float, left_upper: tuple) -> None:
+    def __init__(self, width: float, height: float, left_upper: Point) -> None:
         super().__init__(width=width, height=height)
         self.left_upper = left_upper
 
@@ -12,7 +13,7 @@ class BoundingBox(Rectangle):
 
 
 def main() -> None:
-    bounding_box = BoundingBox(width=2.0, height=3.0, left_upper=(2.3, 4))
+    bounding_box = BoundingBox(width=2.0, height=3.0, left_upper=Point(p=(2.3, 4)))
     print(bounding_box)
 
 
