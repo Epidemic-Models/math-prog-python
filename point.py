@@ -12,3 +12,7 @@ class Point:
     def __add__(self, other: Point) -> Point:
         result = (self.x + other.x, self.y + other.y)
         return Point(p=result)
+
+    def __sub__(self, other: Point) -> Point:
+        result = (self.x - other.x, self.y - other.y)
+        return Point(p=result)
