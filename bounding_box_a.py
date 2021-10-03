@@ -76,7 +76,7 @@ class BoundingBoxA(Rectangle):
         return intersection
 
 
-def main():
+def main() -> None:
     bounding_box_a = BoundingBoxA(left_upper=Point(p=(2, 7)), right_lower=Point(p=(9, 3)))
     bounding_box_other = BoundingBoxA(left_upper=Point(p=(4, 5)), right_lower=Point(p=(13, 1)))
     print(bounding_box_a)
