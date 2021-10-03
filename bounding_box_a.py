@@ -26,9 +26,10 @@ class BoundingBoxA(Rectangle):
     def shift_by(self, shift: Point) -> None:
         self.left_upper += shift
 
-    def get_shifted(self, shift: Point) -> BoundingBox:
+    def get_shifted(self, shift: Point) -> BoundingBoxA:
         left_upper_shifted = self.left_upper + shift
-        return BoundingBox(left_upper=left_upper_shifted, width=self.width, height=self.height)
+        right_lower_shifted = self.right_lower + shift
+        return BoundingBoxA(left_upper=left_upper_shifted, right_lower=right_lower_shifted)
 
     @property
     def left_lower(self) -> Point:
@@ -80,9 +81,11 @@ def main() -> None:
     bounding_box_a = BoundingBoxA(left_upper=Point(p=(2, 7)), right_lower=Point(p=(9, 3)))
     bounding_box_other = BoundingBoxA(left_upper=Point(p=(4, 5)), right_lower=Point(p=(13, 1)))
     print(bounding_box_a)
+    point = Point(p=(1, 1))
     print("A different representation of the bounding box: ", bounding_box_a.convert())
     print("The intersection of the two bounding boxes: ", bounding_box_a.get_intersection(bounding_box_other))
     print("The union of the two bounding boxes: ", bounding_box_a.get_union(bounding_box_other))
+    print("Shifted bounding box: ", bounding_box_a.get_shifted(point))
 
 
 if __name__ == "__main__":
