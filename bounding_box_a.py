@@ -21,7 +21,7 @@ class BoundingBoxA(Rectangle):
                ", right_lower=" + str(self.right_lower)
 
     def convert(self) -> BoundingBox:
-        return BoundingBox(self.width, self.height, self.left_upper)
+        return BoundingBox(self.width, self.height, self.left_lower)
 
     def shift_by(self, shift: Point) -> None:
         self.left_upper += shift
