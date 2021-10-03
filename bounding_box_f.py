@@ -19,7 +19,7 @@ class BoundingBoxF(Rectangle):
                ", width=" + str(self.width) + ", height=" + str(self.height)
 
     def convert(self) -> BoundingBox:
-        return BoundingBox(self.width, self.height, self.left_lower)
+        return BoundingBox(width=self.width, height=self.height, left_upper=self.left_lower)
 
     @property
     def left_upper(self) -> Point:
