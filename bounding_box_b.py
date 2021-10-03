@@ -72,9 +72,6 @@ def main() -> None:
     print(bounding_box_1)
     print(bounding_box_1.convert())
     bounding_box_2 = BoundingBoxB(left_lower=Point(p=(2, 2)), right_upper=Point(p=(4, 4)))
-    print("A different representation of the bounding box: ", bounding_box_1.convert())
-    print("The union of the two bounding boxes: ", bounding_box_1.get_union(bounding_box_2))
-    print("The intersection of the two bounding boxes: ", bounding_box_1.get_intersection(bounding_box_2))
 
 
 if __name__ == "__main__":
