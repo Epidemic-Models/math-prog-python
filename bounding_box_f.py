@@ -82,13 +82,6 @@ class BoundingBoxF(Rectangle):
         return intersection
 
 
-def main() -> None:
-    bounding_box_1 = BoundingBoxF(centre=Point(p=(3, 5)), width=3, height=3)
-    print(bounding_box_1)
-    bounding_box_2 = BoundingBoxF(centre=Point(p=(1, 2)), width=3, height=3)
-    print("A different representation of the bounding box: ", bounding_box_1.convert())
-    print("The intersection of the two bounding boxes: ", bounding_box_1.get_intersection(bounding_box_1))
-    print("The union of the two bounding boxes: ", bounding_box_2.get_union(bounding_box_2))
 
 
 if __name__ == "__main__":
