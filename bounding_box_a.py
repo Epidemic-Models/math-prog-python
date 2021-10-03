@@ -44,23 +44,21 @@ class BoundingBoxA(Rectangle):
 
     @property
     def centre(self) -> Point:
-        shift = Point(p=(self.width / 2, self.height / 2))
-        self.__centre = Point(p=(self.left_upper.x + shift.x, self.left_upper.y - shift.y))
+        shift = Point(p=(self.width / 2, - self.height / 2))
+        self.__centre = self.left_upper + shift
         return self.__centre
 
-    def get_union(self, other: BoundingBoxA) -> BoundingBox:
+    def get_union(self, other: BoundingBoxA) -> BoundingBoxA:
         union_left_upper = Point(p=(min(self.left_upper.x, other.left_upper.x),
                                     max(self.left_upper.y, other.left_upper.y))
                                  )
         union_right_lower = Point(p=(max(self.right_lower.x, other.right_lower.x),
                                      min(self.right_lower.y, other.right_lower.y))
                                   )
-        union_width = union_right_lower.x - union_left_upper.x
-        union_height = union_left_upper.y - union_right_lower.y
-        union = BoundingBox(left_upper=union_left_upper, width=union_width, height=union_height)
+        union = BoundingBoxA(left_upper=union_left_upper, right_lower=union_right_lower)
         return union
 
-    def get_intersection(self, other: BoundingBoxA) -> BoundingBox:
+    def get_intersection(self, other: BoundingBoxA) -> BoundingBoxA:
         intersection_left_upper = Point(p=(max(self.left_upper.x, other.left_upper.x),
                                            min(self.left_upper.y, other.left_upper.y))
                                         )
@@ -72,9 +70,8 @@ class BoundingBoxA(Rectangle):
 
         intersection = None
         if intersection_height > 0 and intersection_width > 0:
-            intersection = BoundingBox(left_upper=intersection_left_upper,
-                                       width=intersection_width,
-                                       height=intersection_height)
+            intersection = BoundingBoxA(left_upper=intersection_left_upper,
+                                        right_lower=intersection_right_lower)
 
         return intersection
 
