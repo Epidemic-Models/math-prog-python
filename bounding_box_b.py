@@ -70,7 +70,6 @@ class BoundingBoxB(Rectangle):
 def main() -> None:
     bounding_box_1 = BoundingBoxB(left_lower=Point(p=(2.1, 2)), right_upper=Point(p=(3, 3)))
     print(bounding_box_1)
-    print(bounding_box_1.convert())
     bounding_box_2 = BoundingBoxB(left_lower=Point(p=(2, 2)), right_upper=Point(p=(4, 4)))
     print("A different representation of the bounding box: ", bounding_box_1.convert())
     print("The union of the two bounding boxes: ", bounding_box_1.get_union(bounding_box_2))
