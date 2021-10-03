@@ -5,12 +5,9 @@ from point import Point
 from rectangle import Rectangle
 
 
-class BoundingBoxA(Rectangle):
-    def __init__(self, left_upper: Point, right_lower: Point) -> None:
+class BoundingBoxC(Rectangle):
+    def __init__(self, width: float, height: float, left_upper: Point) -> None:
         self.left_upper = left_upper
-        self.right_lower = right_lower
-        width = self.right_lower.x - self.left_upper.x
-        height = self.left_upper.y - self.right_lower.y
         super().__init__(width=width, height=height)
         self.__left_lower = None
         self.__right_upper = None
@@ -38,9 +35,9 @@ class BoundingBoxA(Rectangle):
 
     @property
     def right_upper(self) -> Point:
-        shift = Point(p=(0, self.height))
-        self.__right_upper = self.right_lower + shift
-        return self.__right_upper
+        shift = Point(p=(self.width, 0))
+        self.__right_upper = self.left_upper + shift
+        return self.__left_lower
 
     @property
     def centre(self) -> Point:
@@ -74,16 +71,3 @@ class BoundingBoxA(Rectangle):
                                         right_lower=intersection_right_lower)
 
         return intersection
-
-
-def main() -> None:
-    bounding_box_a = BoundingBoxA(left_upper=Point(p=(2, 7)), right_lower=Point(p=(9, 3)))
-    bounding_box_other = BoundingBoxA(left_upper=Point(p=(4, 5)), right_lower=Point(p=(13, 1)))
-    print(bounding_box_a)
-    print("A different representation of the bounding box: ", bounding_box_a.convert())
-    print("The intersection of the two bounding boxes: ", bounding_box_a.get_intersection(bounding_box_other))
-    print("The union of the two bounding boxes: ", bounding_box_a.get_union(bounding_box_other))
-
-
-if __name__ == "__main__":
-    main()
