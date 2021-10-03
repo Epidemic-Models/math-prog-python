@@ -25,6 +25,7 @@ class BoundingBoxA(Rectangle):
 
     def shift_by(self, shift: Point) -> None:
         self.left_upper += shift
+        self.right_upper += shift
 
     def get_shifted(self, shift: Point) -> BoundingBoxA:
         left_upper_shifted = self.left_upper + shift
