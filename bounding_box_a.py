@@ -26,6 +26,9 @@ class BoundingBoxA(Rectangle):
     def shift_by(self, shift: Point) -> None:
         self.left_upper += shift
         self.right_lower += shift
+        self.__right_upper += shift
+        self.__left_lower += shift
+        self.__centre += shift
 
     def get_shifted(self, shift: Point) -> BoundingBoxA:
         left_upper_shifted = self.left_upper + shift
@@ -77,6 +80,14 @@ class BoundingBoxA(Rectangle):
 
         return intersection
 
+    def get_difference(self, other: BoundingBoxA) -> str:
+        intersection = self.get_intersection(other=other)
+        return "(" + str(self) + ") \\ (" + str(intersection) + ")"
+
+    def get_symmetric_difference(self, other: BoundingBoxA) -> str:
+        intersection = self.get_intersection(other=other)
+        return "((" + str(self) + ") U (" + str(other) + ")) \\ (" + str(intersection) + ")"
+
 
 def main() -> None:
     bounding_box_a = BoundingBoxA(left_upper=Point(p=(2, 7)), right_lower=Point(p=(9, 3)))
@@ -87,6 +98,8 @@ def main() -> None:
     print("The intersection of the two bounding boxes: ", bounding_box_a.get_intersection(bounding_box_other))
     print("The union of the two bounding boxes: ", bounding_box_a.get_union(bounding_box_other))
     print("Shifted bounding box: ", bounding_box_a.get_shifted(point))
+    print("Difference: ", bounding_box_a.get_difference(bounding_box_other))
+    print("Symmetric Difference: ", bounding_box_a.get_symmetric_difference(bounding_box_other))
 
 
 if __name__ == "__main__":
