@@ -1,10 +1,25 @@
+from typing import Union
+
 import math
 
 
 class Rectangle:
+    def __init__(self, width: Union[float, int], height: Union[float, int]) -> None:
+        if isinstance(width, int) or isinstance(width, float):
+            if width > 0:
+                self.width = width
+            else:
+                raise Exception("The width is not positive")
+        else:
+            raise Exception("The width is not a float or an integer.")
 
-    def __init__(self, width, height):
-        self.width = width
+        if isinstance(height, int) or isinstance(height, float):
+            if height > 0:
+                self.height = height
+            else:
+                raise Exception("The height is not positive")
+        else:
+            raise Exception("The height is not a float or an integer.")
         self.height = height
 
     def area(self):
@@ -25,5 +40,5 @@ def main():
     print("The length of the diagonal is: ", rect.calculate_diagonal())
 
 
-if __name__ ==  "__main__":
+if __name__ == "__main__":
     main()
