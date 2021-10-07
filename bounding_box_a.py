@@ -107,6 +107,7 @@ def main() -> None:
     print("Difference: ", bounding_box_a.get_difference(bounding_box_other))
     print("Symmetric Difference: ", bounding_box_a.get_symmetric_difference(bounding_box_other))
     print(bounding_box_a.attribute())
+    print("shifted bounding_box_a: ", bounding_box_a.get_shifted(point))
 
 
 if __name__ == "__main__":
