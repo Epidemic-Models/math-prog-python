@@ -1,13 +1,31 @@
 from __future__ import annotations
+from typing import Union
 
 from point import Point
 from rectangle import Rectangle
 
 
 class BoundingBox(Rectangle):
-    def __init__(self, width: float, height: float, left_upper: Point) -> None:
+    def __init__(self, width: Union[float, int],
+                 height: Union[float, int],
+                 left_upper: Union[Point, tuple]) -> None:
+        """
+        Constructor for the bounding box D representation
+        The representation uses left upper corner in rotated co-ordinate system,
+        and the width and the height of the bounding box
+        :param Union[float, int] width: width of the rectangle (dimension y)
+        :param Union[float, int] height: height of the rectangle (dimension x)
+        :param Union[Point, tuple] left_upper: left upper corner of the rectangle
+        :return None
+        """
         super().__init__(width=width, height=height)
-        self.left_upper = left_upper
+        if isinstance(left_upper, Point):
+            self.left_upper = left_upper
+        elif isinstance(left_upper, tuple):
+            self.left_upper = Point(p=left_upper)
+        else:
+            raise Exception("Left upper corner, which was passed is neither a point nor a tuple.")
+
         self.__right_upper = None
         self.__left_lower = None
         self.__right_lower = None
@@ -73,6 +91,14 @@ class BoundingBox(Rectangle):
         return union
 
     def get_intersection(self, other: BoundingBox) -> BoundingBox:
+        """
+        Returns the intersection of the actual bounding box and the other one,
+        the intersection is the common part of both the bounding boxes, and it is a bounding box.
+        The other and the resulting bounding box has the same representation as the actual one.
+        :param BoundingBox other: input bounding box, with which the intersection is calculated
+        :return BoundingBox: the intersection of the two bounding boxes,
+        if it exists, otherwise it is None
+        """
         intersection_left_upper = Point(p=(max(self.left_upper.x, other.left_upper.x),
                                         max(self.left_upper.y, other.left_upper.y))
                                         )
@@ -89,14 +115,6 @@ class BoundingBox(Rectangle):
                                        height=intersection_height)
 
         return intersection
-
-    def get_difference(self, other: BoundingBox) -> str:
-        intersection = self.get_intersection(other=other)
-        return "(" + str(self) + ") \\ (" + str(intersection) + ")"
-
-    def get_symmetric_difference(self, other: BoundingBox) -> str:
-        intersection = self.get_intersection(other=other)
-        return "((" + str(self) + ") U (" + str(other) + ")) \\ (" + str(intersection) + ")"
 
 
 def main() -> None:
