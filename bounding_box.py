@@ -41,6 +41,12 @@ class BoundingBox(Rectangle):
         self.__centre = self.left_upper + shift
         return self.__centre
 
+    def attribute(self) -> str:
+        return "Attributes of BoundingBox:  \n left_upper: " + str(self.left_upper) + \
+               ", right_upper: " + str(self.right_upper) + ", left_lower: " + str(self.left_lower) + ", right_lower: " \
+               + str(self.right_lower) + ", centre: " + str(self.centre) + ", width: " + str(self.width) + \
+               ", height: " + str(self.height)
+
     def shift_by(self, shift: Point) -> None:
         self.left_upper += shift
         self.__right_upper += shift
@@ -95,10 +101,13 @@ class BoundingBox(Rectangle):
 
 def main() -> None:
     bounding_box = BoundingBox(width=2.0, height=3.0, left_upper=Point(p=(2.3, 4.3)))
+    point1 = Point(p=(1, 1))
     print(bounding_box)
     print("The right lower corner: ", bounding_box.right_lower)
     bounding_box_2 = BoundingBox(width=1, height=1, left_upper=Point(p=(3.3, 5.3)))
     print(bounding_box.get_intersection(other=bounding_box_2))
+    print(bounding_box.attribute())
+    print("shifted bounding box: ", bounding_box.get_shifted(point1))
 
 
 if __name__ == "__main__":
