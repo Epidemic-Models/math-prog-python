@@ -1,5 +1,5 @@
-from bounding_box import BoundingBox
-from point import Point
+from src.bounding_box import BoundingBox
+from src.point import Point
 
 
 def main() -> None:

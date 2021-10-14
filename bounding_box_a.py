@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from bounding_box import BoundingBox
-from point import Point
-from rectangle import Rectangle
+from src.bounding_box import BoundingBox
+from src.point import Point
+from src.rectangle import Rectangle
 
 
 class BoundingBoxA(Rectangle):

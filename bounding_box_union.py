@@ -1,5 +1,5 @@
 from __future__ import annotations
-from rectangle import Rectangle
+from src.rectangle import Rectangle
 
 
 class BoundingBoxC(Rectangle):

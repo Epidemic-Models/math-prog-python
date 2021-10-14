@@ -1,8 +1,8 @@
 from __future__ import annotations
 from typing import Union
 
-from point import Point
-from rectangle import Rectangle
+from src.point import Point
+from src.rectangle import Rectangle
 
 
 class BoundingBox(Rectangle):
