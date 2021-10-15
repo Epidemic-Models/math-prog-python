@@ -4,7 +4,7 @@ from typing import Union
 
 
 class Complex:
-    def __init__(self, re: Union[float, int], im: Union[float, int]) -> None:
+    def __init__(self, re: Union[float, int] = 0.0, im: Union[float, int] = 0.0) -> None:
         """
         Constructor for a complex number, represented in it's canonical form
         :param Union[float, int] re: real part of the complex number
@@ -62,36 +62,36 @@ class Complex:
         """
         if self.re == 0.0:
             if self.im == 0.0:
-                event = "0"
+                result = "0"
             elif self.im == 1.0:
-                event = "i"
+                result = "i"
             elif self.im == -1.0:
-                event = "-i"
+                result = "-i"
             else:
-                event = format(self.im, '.3g') + "i"
+                result = format(self.im, '.3g') + "i"
         else:
-            event = format(self.re)
+            result = format(self.re)
             if self.im == 0.0:
-                event = format(self.re)
+                result = format(self.re)
             elif self.im == 1.0:
-                event += "i"
+                result += "i"
             elif self.im == -1.0:
-                event += "-i"
+                result += "-i"
             elif self.im > 0:
-                event += " + " + format(self.im, '.3g') + "i"
+                result += " + " + format(self.im, '.3g') + "i"
             elif self.im < 0:
-                event += " - " + format(-self.im, '.3g') + "i"
+                result += " - " + format(-self.im, '.3g') + "i"
 
-        event += " = "
+        result += " = "
         phi_str = ""
         phi_div_pi = self.phi / math.pi
         phi_str += format(phi_div_pi, '.3g') + "\u03C0"
         if self.r == 0.0:
-            event += "0"
+            result += "0"
         else:
-            event += format(self.r, '.3g') + " * (cos(" + phi_str + ") + sin(" + phi_str + ")i" + ")"
+            result += format(self.r, '.3g') + " * (cos(" + phi_str + ") + sin(" + phi_str + ")i" + ")"
 
-        return event
+        return result
 
     def __eq__(self, other: Union[int, float, Complex]) -> bool:
         """
