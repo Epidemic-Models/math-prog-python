@@ -11,12 +11,12 @@ class Complex:
         :param Union[float, int] im: imaginary part of the complex number
         """
         if isinstance(re, float) or isinstance(re, int):
-            self.re = re
+            self.re = float(re)
         else:
             raise Exception("The real part being passed is neither a float nor an integer.")
 
         if isinstance(im, float) or isinstance(im, int):
-            self.im = im
+            self.im = float(im)
         else:
             raise Exception("The imaginary part being passed is neither a float nor an integer.")
 
@@ -103,7 +103,7 @@ class Complex:
         """
         Determines the equality of two complex numbers
         :param Union[int, float, Complex] other: the other complex number
-        :return bool: True if and only if self is equal to other
+        :return bool: True if and only if the left-hand and the right-hand operand are equal
         """
         if isinstance(other, int) or isinstance(other, float):
             return (self.re == float(other)) and (self.im == 0.0)
@@ -112,11 +112,11 @@ class Complex:
         else:
             raise Exception("The right hand operand must be either an integer, or a float or a Complex number.")
 
-    def __ne__(self, other: Union[int, float, Complex]) -> bool:
+    def __ne__(self, other: Union[int, float, Complex] = 0.0) -> bool:
         """
         Determines if two complex numbers are different
         :param Union[int, float, Complex] other: the other complex number
-        :return bool: True if and only if self is not equal to other
+        :return bool: True if and only if the left-hand and the right-hand operand are not equal
         """
         return not (self == other)
 
@@ -124,10 +124,10 @@ class Complex:
         """
         Returns the sum of two complex numbers
         :param Union[int, float, Complex] other: the other complex number
-        :return Complex: the sum of the self and the other
+        :return Complex: the sum of the left-hand and the right-hand operand
         """
         if isinstance(other, float) or isinstance(other, int):
-            return Complex(re=self.re + other, im=self.im)
+            return Complex(re=self.re + float(other), im=self.im)
         elif isinstance(other, Complex):
             return Complex(re=self.re + other.re, im=self.im + other.im)
         else:
@@ -137,10 +137,10 @@ class Complex:
         """
         Returns the difference of two complex numbers
         :param Union[int, float, Complex] other: the other complex number
-        :return: the difference of the self and the other
+        :return Complex: the difference of the left-hand and the right-hand operand
         """
         if isinstance(other, float) or isinstance(other, int):
-            return Complex(re=self.re - other, im=self.im)
+            return Complex(re=self.re - float(other), im=self.im)
         elif isinstance(other, Complex):
             return Complex(re=self.re - other.re, im=self.im - other.im)
         else:
@@ -150,10 +150,10 @@ class Complex:
         """
         Returns the product of two complex numbers
         :param Union[int, float, Complex] other: the other complex number
-        :return Complex: the product of the self and the other
+        :return Complex: the product of the left-hand and the right-hand operand
         """
         if isinstance(other, int) or isinstance(other, float):
-            return Complex(re=self.re * other, im=self.im * other)
+            return Complex(re=self.re * float(other), im=self.im * float(other))
         elif isinstance(other, Complex):
             return Complex(re=self.re * other.re - self.im * other.im,
                            im=self.re * other.im + self.im * other.re)
@@ -163,21 +163,21 @@ class Complex:
     def conjugate(self) -> Complex:
         """
         Returns the conjugate of a complex number
-        :return Complex: the conjugate of self
+        :return Complex: the conjugate of the actual complex number
         """
         return Complex(re=self.re, im=-self.im)
 
     def __truediv__(self, other: Union[int, float, Complex]) -> Complex:
         """
         Returns the quotient of two complex numbers
-        :param Union[int, float, Complex] other: other complex number
-        :return Complex: the quotient of the self and the other
+        :param Union[int, float, Complex] other: the other complex number
+        :return Complex: the quotient of the  left-hand and the right-hand operand
         """
         if isinstance(other, int) or isinstance(other, float):
             if float(other) == 0.0:
                 raise ZeroDivisionError
             else:
-                return Complex(re=self.re / other, im=self.im / other)
+                return Complex(re=self.re / float(other), im=self.im / float(other))
         elif isinstance(other, Complex):
             return self * other.conjugate() / (other.r ** 2)
         else:
@@ -187,13 +187,14 @@ class Complex:
         """
         Returns the integer power of a complex number
         :param int n: exponent
-        :return Complex: the nth power of self
+        :return Complex: the nth power of actual complex number
         """
         if not isinstance(n, int):
             raise Exception("The exponent must be an integer!")
         r_power_n = self.r ** n
         n_phi = self.phi * n
-        return Complex(re=r_power_n * math.cos(n_phi), im=r_power_n * math.sin(n_phi))
+        return Complex(re=r_power_n * math.cos(n_phi),
+                       im=r_power_n * math.sin(n_phi))
 
 
 def main() -> None:
