@@ -6,7 +6,7 @@ def main() -> None:
     complex_a = Complex(re=2, im=-2)
     print("complex_a = " + str(complex_a))
     print("Conjugate of the complex_a = " + str(complex_a.conjugate()))
-    complex_b = Complex(re=-2, im=-5)
+    complex_b = Complex(re=2, im=0)
     print("complex_b = " + str(complex_b))
     print("Conjugate of b = " + str(complex_b.conjugate()))
     print("complex_a == complex_b is " + str(complex_a.__eq__(complex_b)))

@@ -179,7 +179,10 @@ class Complex:
             else:
                 return Complex(re=self.re / float(other), im=self.im / float(other))
         elif isinstance(other, Complex):
-            return self * other.conjugate() / (other.r ** 2)
+            if other != 0:
+                return self * other.conjugate() / (other.r ** 2)
+            else:
+                raise ZeroDivisionError
         else:
             raise Exception("The right hand operand must be either an integer, or a float or a Complex number.")
 
