@@ -4,19 +4,19 @@ from typing import Union
 
 
 class Complex:
-    def __init__(self, real: Union[float, int], imaginary: Union[float, int]) -> None:
+    def __init__(self, re: Union[float, int], im: Union[float, int]) -> None:
         """
         Constructor for a complex number
-        :param Union[float, int] real: real part of the complex number
-        :param Union[float, int] imaginary: imaginary part of the complex number
+        :param Union[float, int] re: real part of the complex number
+        :param Union[float, int] im: imaginary part of the complex number
         """
-        if isinstance(real, float) or isinstance(real, int):
-            self.re = real
+        if isinstance(re, float) or isinstance(re, int):
+            self.re = re
         else:
             raise Exception("The real part being passed is neither a float nor an integer.")
 
-        if isinstance(imaginary, float) or isinstance(imaginary, int):
-            self.im = imaginary
+        if isinstance(im, float) or isinstance(im, int):
+            self.im = im
         else:
             raise Exception("The imaginary part being passed is neither a float nor an integer.")
 
@@ -121,9 +121,9 @@ class Complex:
         :return Complex: the sum of the self and the other
         """
         if isinstance(other, float) or isinstance(other, int):
-            return Complex(real=self.re + other, imaginary=self.im)
+            return Complex(re=self.re + other, im=self.im)
         elif isinstance(other, Complex):
-            return Complex(real=self.re + other.re, imaginary=self.im + other.im)
+            return Complex(re=self.re + other.re, im=self.im + other.im)
         else:
             raise Exception("The right hand operand must be either an integer, or a float or a Complex number.")
 
@@ -134,9 +134,9 @@ class Complex:
         :return: the difference of the self and the other
         """
         if isinstance(other, float) or isinstance(other, int):
-            return Complex(real=self.re - other, imaginary=self.im)
+            return Complex(re=self.re - other, im=self.im)
         elif isinstance(other, Complex):
-            return Complex(real=self.re - other.re, imaginary=self.im - other.im)
+            return Complex(re=self.re - other.re, im=self.im - other.im)
         else:
             raise Exception("The right hand operand must be either an integer, or a float or a Complex number.")
 
@@ -147,10 +147,10 @@ class Complex:
         :return Complex: the product of the self and the other
         """
         if isinstance(other, int) or isinstance(other, float):
-            return Complex(real=self.re * other, imaginary=self.im * other)
+            return Complex(re=self.re * other, im=self.im * other)
         elif isinstance(other, Complex):
-            return Complex(real=self.re * other.re - self.im * other.im,
-                           imaginary=self.re * other.im + self.im * other.re)
+            return Complex(re=self.re * other.re - self.im * other.im,
+                           im=self.re * other.im + self.im * other.re)
         else:
             raise Exception("The right hand operand must be either an integer, or a float or a Complex number.")
 
@@ -159,7 +159,7 @@ class Complex:
         Returns the conjugate of a complex number
         :return Complex: the conjugate of self
         """
-        return Complex(real=self.re, imaginary=-self.im)
+        return Complex(re=self.re, im=-self.im)
 
     def __truediv__(self, other: Union[int, float, Complex]) -> Complex:
         """
@@ -171,7 +171,7 @@ class Complex:
             if float(other) == 0.0:
                 raise ZeroDivisionError
             else:
-                return Complex(real=self.re / other, imaginary=self.im / other)
+                return Complex(re=self.re / other, im=self.im / other)
         elif isinstance(other, Complex):
             return self * other.conjugate() / (other.r ** 2)
         else:
@@ -187,12 +187,12 @@ class Complex:
             raise Exception("The exponent must be an integer!")
         r_power_n = self.r ** n
         n_phi = self.phi * n
-        return Complex(real=r_power_n * math.cos(n_phi), imaginary=r_power_n * math.sin(n_phi))
+        return Complex(re=r_power_n * math.cos(n_phi), im=r_power_n * math.sin(n_phi))
 
 
 def main() -> None:
     print("Testing functionalities of Complex class: ")
-    a = Complex(real=-2, imaginary=-2)
+    a = Complex(re=-2, im=-2)
     print("a = " + str(a))
 
 
