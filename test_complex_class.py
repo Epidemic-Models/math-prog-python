@@ -3,7 +3,7 @@ from complex import Complex
 
 def main() -> None:
     print("Testing functionalities of Complex class: ")
-    complex_a = Complex(re=-2, im=-2)
+    complex_a = Complex(re=0, im=0)
     print("complex_a = " + str(complex_a))
     print("Conjugate of the complex_a = " + str(complex_a.conjugate()))
     complex_b = Complex(re=-2, im=-5)

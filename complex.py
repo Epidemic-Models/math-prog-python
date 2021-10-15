@@ -27,6 +27,8 @@ class Complex:
     def r(self) -> float:
         """
         Returns the modulus of the complex number
+        In case of complex number with zero real and imaginary parts,
+        the modulus of the complex number is 0.0.
         :return float: modulus of the complex number
         """
         self.__r = math.sqrt(self.re ** 2 + self.im ** 2)
@@ -36,6 +38,8 @@ class Complex:
     def phi(self) -> float:
         """
         Returns the argument of a complex number
+        In case of complex number with zero real and imaginary parts,
+        the argument of the complex number is 0.0.
         :return float: argument of a complex number
         """
         if self.re == 0.0:
@@ -57,22 +61,24 @@ class Complex:
     def __str__(self) -> str:
         """
         Converts a complex number into string format
+        In case of complex number with zero real and imaginary parts,
+        both the argument and the modulus are 0.0.
         :return string: a string containing the complex number
                         in "canonical form = trigonometric form" format
         """
         if self.re == 0.0:
             if self.im == 0.0:
-                result = "0"
+                result = "0 + 0 * i"
             elif self.im == 1.0:
-                result = "i"
+                result = "0 + i"
             elif self.im == -1.0:
-                result = "-i"
+                result = "0 - i"
             else:
                 result = format(self.im, '.3g') + "i"
         else:
             result = format(self.re)
             if self.im == 0.0:
-                result = format(self.re)
+                result = format(self.re) + "0 * i"
             elif self.im == 1.0:
                 result += "i"
             elif self.im == -1.0:
@@ -87,7 +93,7 @@ class Complex:
         phi_div_pi = self.phi / math.pi
         phi_str += format(phi_div_pi, '.3g') + "\u03C0"
         if self.r == 0.0:
-            result += "0"
+            result += "0 * (cos(0) + sin(0))"
         else:
             result += format(self.r, '.3g') + " * (cos(" + phi_str + ") + sin(" + phi_str + ")i" + ")"
 
