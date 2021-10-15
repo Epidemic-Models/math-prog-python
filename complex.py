@@ -6,7 +6,7 @@ from typing import Union
 class Complex:
     def __init__(self, re: Union[float, int], im: Union[float, int]) -> None:
         """
-        Constructor for a complex number
+        Constructor for a complex number, represented in it's canonical form
         :param Union[float, int] re: real part of the complex number
         :param Union[float, int] im: imaginary part of the complex number
         """
