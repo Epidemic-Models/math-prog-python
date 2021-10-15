@@ -203,7 +203,9 @@ class Complex:
 def main() -> None:
     print("Testing functionalities of Complex class: ")
     a = Complex(re=-2, im=-2)
+    b = Complex(re=3.2)
     print("a = " + str(a))
+    print("a + b = ", str(a + b))
 
 
 if __name__ == '__main__':
