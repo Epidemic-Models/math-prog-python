@@ -93,7 +93,7 @@ class Complex:
         phi_div_pi = self.phi / math.pi
         phi_str += format(phi_div_pi, '.3g') + "\u03C0"
         if self.r == 0.0:
-            result += "0 * (cos(0) + sin(0))"
+            result += "0 * (cos(0) + sin(0)i)"
         else:
             result += format(self.r, '.3g') + " * (cos(" + phi_str + ") + sin(" + phi_str + ")i" + ")"
 
