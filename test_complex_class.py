@@ -21,6 +21,7 @@ def main() -> None:
     print("complex_g = " + str(complex_g))
     complex_h = Complex(re=0, im=0)
     print("complex_h = " + str(complex_h), "\n")
+    real_x = 4
 
     print("Conjugates of the given complex numbers:")
     print("Conjugate of the complex_a = " + str(complex_a.conjugate()))
@@ -48,7 +49,10 @@ def main() -> None:
 
     print("Find the nth power of a complex number:")
     n = 5
-    print("complex_a ** 5 = " + str(complex_a ** n))
+    print("complex_a ** 5 = " + str(complex_a ** n),  "\n")
+
+    print("Test whether complex_a + real_x is working.")
+    print("complex_a + real_x = " + str(complex_a + real_x))
 
 
 if __name__ == '__main__':
