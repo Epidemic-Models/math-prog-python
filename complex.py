@@ -198,7 +198,7 @@ class Complex:
             if n == 0:
                 raise Exception("The zeroth power of a zero complex number is indeterminate.")
             elif n < 0:
-                raise Exception("The zero complex number cannot be raised to a negative number")
+                raise Exception("The zero complex number cannot be raised to a negative number.")
         r_power_n = self.r ** n
         n_phi = self.phi * n
         return Complex(re=r_power_n * math.cos(n_phi),
