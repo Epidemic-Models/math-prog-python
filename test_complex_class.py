@@ -41,18 +41,19 @@ def main() -> None:
     print("complex_a - complex_g = " + str(complex_a - complex_g))
     print("complex_a - complex_b = " + str(complex_a - complex_b),  "\n")
 
-    print("Test the multiplication and division methods")
-    print("complex_a * complex_b = " + str(complex_a * complex_b))
-    print("complex_a * complex_h = " + str(complex_a * complex_h))
-    print("complex_a * complex_g = " + str(complex_a * complex_g))
-    print("complex_a / complex_h = " + str(complex_a / complex_h),  "\n")
-
     print("Find the nth power of a complex number:")
     n = 5
     print("complex_a ** 5 = " + str(complex_a ** n),  "\n")
 
     print("Test whether complex_a + real_x is working.")
-    print("complex_a + real_x = " + str(complex_a + real_x))
+    print("complex_a + real_x = " + str(complex_a + real_x),  "\n")
+    print("real_x + complex_a = " + str(real_x + complex_a), "\n")
+
+    print("Test the multiplication and division methods")
+    print("complex_a * complex_b = " + str(complex_a * complex_b))
+    print("complex_a * complex_h = " + str(complex_a * complex_h))
+    print("complex_a * complex_g = " + str(complex_a * complex_g))
+    print("complex_a / complex_h = " + str(complex_a / complex_h),  "\n")
 
 
 if __name__ == '__main__':
