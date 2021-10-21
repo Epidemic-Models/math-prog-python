@@ -46,6 +46,11 @@ class Matrix:
                 raise Exception("The matrices are not compatible.")
         else:
             raise Exception("The given multiplier is not a matrix.")
+        
+
+    def __eq__(self, other: Matrix) -> bool:
+        pass
+
 
     @staticmethod
     def check_input_data(data: list) -> None:
