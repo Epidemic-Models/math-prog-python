@@ -21,7 +21,8 @@ def main() -> None:
     print("complex_g = " + str(complex_g))
     complex_h = Complex(re=0, im=0)
     print("complex_h = " + str(complex_h), "\n")
-    real_x = 4
+    real_a = 4
+    real_b = -4
 
     print("Conjugates of the given complex numbers:")
     print("Conjugate of the complex_a = " + str(complex_a.conjugate()))
@@ -45,9 +46,12 @@ def main() -> None:
     n = 5
     print("complex_a ** 5 = " + str(complex_a ** n),  "\n")
 
-    print("Test whether complex_a + real_x is working.")
-    print("complex_a + real_x = " + str(complex_a + real_x),  "\n")
-    print("real_x + complex_a = " + str(real_x + complex_a), "\n")
+    print("Test method to add a real and a complex number.")
+    print("real_a + complex_a = " + str(real_a + complex_a))
+    print("real_b + complex_a = " + str(real_b + complex_a), "\n")
+
+    print("Test method to find the difference of a real and a complex number.")
+    print("real_a - complex_a = " + str(real_a - complex_a), "\n")
 
     print("Test the multiplication and division methods")
     print("complex_a * complex_b = " + str(complex_a * complex_b))

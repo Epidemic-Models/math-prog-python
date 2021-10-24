@@ -133,10 +133,18 @@ class Complex:
         else:
             raise Exception("The right hand operand must be either an integer, or a float or a Complex number.")
 
+    def __radd__(self, other: Union[float, int]) -> Complex:
+        """
+        Returns the sum of a complex and a real number
+        :param Union[float, int] other: a real number
+        :return Complex: the sum of a complex number and  real number
+        """
+        return Complex(re=float(other), im=0.0) + self
+
     def __sub__(self, other: Union[float, int, Complex]) -> Complex:
         """
         Returns the difference of two complex numbers
-        :param Union[int, float, Complex] other: the other complex number
+        :param Union[int, float] other: a real number
         :return Complex: the difference of the left-hand and the right-hand operand
         """
         if isinstance(other, float) or isinstance(other, int):
@@ -145,6 +153,14 @@ class Complex:
             return Complex(re=self.re - other.re, im=self.im - other.im)
         else:
             raise Exception("The right hand operand must be either an integer, or a float or a Complex number.")
+
+    def __rsub__(self, other: Union[float, int]) -> Complex:
+        """
+        Returns the difference of a complex nd a real number
+        :param Union[float, int, Complex] other: The other complex number
+        :return Complex: the difference of a complex number and  real number
+        """
+        return Complex(re=float(other), im=0.0) - self
 
     def __mul__(self, other: Union[int, float, Complex]) -> Complex:
         """
