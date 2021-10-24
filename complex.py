@@ -137,7 +137,7 @@ class Complex:
         """
         Returns the sum of a complex and a real number
         :param Union[float, int] other: a real number
-        :return Complex: the sum of a complex number and  real number
+        :return Complex: the sum of a complex number and a real number
         """
         return Complex(re=float(other), im=0.0) + self
 
@@ -156,8 +156,8 @@ class Complex:
 
     def __rsub__(self, other: Union[float, int]) -> Complex:
         """
-        Returns the difference of a complex nd a real number
-        :param Union[float, int, Complex] other: The other complex number
+        Returns the difference of a complex and a real number
+        :param Union[float, int, Complex] other: a real number
         :return Complex: the difference of a complex number and  real number
         """
         return Complex(re=float(other), im=0.0) - self
