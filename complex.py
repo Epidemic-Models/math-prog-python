@@ -144,7 +144,7 @@ class Complex:
     def __sub__(self, other: Union[float, int, Complex]) -> Complex:
         """
         Returns the difference of two complex numbers
-        :param Union[int, float] other: a real number
+        :param Union[int, float, Complex] other: a real number
         :return Complex: the difference of the left-hand and the right-hand operand
         """
         if isinstance(other, float) or isinstance(other, int):
@@ -157,7 +157,7 @@ class Complex:
     def __rsub__(self, other: Union[float, int]) -> Complex:
         """
         Returns the difference of a complex and a real number
-        :param Union[float, int, Complex] other: a real number
+        :param Union[float, int] other: a real number
         :return Complex: the difference of a complex number and  real number
         """
         return Complex(re=float(other), im=0.0) - self
