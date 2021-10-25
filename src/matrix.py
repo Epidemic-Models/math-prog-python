@@ -46,11 +46,25 @@ class Matrix:
                 raise Exception("The matrices are not compatible.")
         else:
             raise Exception("The given multiplier is not a matrix.")
-        
+
+    def __add__(self, other: Matrix) -> Matrix:
+        if isinstance(other, Matrix):
+            if self.n_rows == other.n_rows and self.n_cols == other.n_cols:
+                result = []
+                for idx_1 in range(0, self.n_rows):
+                    temp_row = []
+                    for idx_2 in range(0, self.n_cols):
+                        elem = self.__data[idx_1][idx_2] + other.data[idx_1][idx_2]
+                        temp_row.append(elem)
+                    result.append(temp_row)
+                return Matrix(data=result)
+            else:
+                raise Exception("The matrices are not compatible")
+        else:
+            raise Exception("The given ")
 
     def __eq__(self, other: Matrix) -> bool:
         pass
-
 
     @staticmethod
     def check_input_data(data: list) -> None:
@@ -90,8 +104,10 @@ class Matrix:
 def main() -> None:
     a = Matrix(data=[[1, 2], [3, 4]])
     b = Matrix(data=[[0, 1, 0], [-1, 1, -1]])
+    c = Matrix(data=[[1, 2], [3, 4]])
     print(a)
     print(a @ b)
+    print(a + c)
 
 
 if __name__ == "__main__":
