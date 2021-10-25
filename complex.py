@@ -213,7 +213,7 @@ class Complex:
 
     def __rtruediv__(self, other: Union[float, int]) -> Complex:
         """
-        Returns the quotient of a realm number and a complex numbers
+        Returns the quotient of a real number and a complex numbers
         :param Union[float, int] other: a real number
         :return Complex: returns the quotient of a real number and a complex number
         """
