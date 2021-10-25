@@ -139,7 +139,7 @@ class Complex:
         :param Union[float, int] other: a real number
         :return Complex: the sum of a complex number and a real number
         """
-        return Complex(re=float(other), im=0.0) + self
+        return self + other
 
     def __sub__(self, other: Union[float, int, Complex]) -> Complex:
         """
@@ -175,6 +175,15 @@ class Complex:
                            im=self.re * other.im + self.im * other.re)
         else:
             raise Exception("The right hand operand must be either an integer, or a float or a Complex number.")
+
+    def __rmul__(self, other: Union[float, int]) -> Complex:
+        """
+        Returns the product of a real number and a complex number
+        :param Union[float, int] other: a real number
+        :return Complex: the product of real number number and a complex number
+        """
+
+        return self * other
 
     def conjugate(self) -> Complex:
         """
