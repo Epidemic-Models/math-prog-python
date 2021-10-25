@@ -108,6 +108,7 @@ def main() -> None:
     print(a)
     print(a @ b)
     print(a + c)
+    print(a + b)
 
 
 if __name__ == "__main__":
