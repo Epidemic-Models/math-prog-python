@@ -56,6 +56,9 @@ def main() -> None:
     print("Test method to find the product of a real and a complex number.")
     print("real_a * complex_a = " + str(real_a * complex_a), "\n")
 
+    print("Test method to find the quotient of a real and a complex number.")
+    print("real_a / complex_a = " + str(real_a / complex_a), "\n")
+
     print("Test the multiplication and division methods")
     print("complex_a * complex_b = " + str(complex_a * complex_b))
     print("complex_a * complex_h = " + str(complex_a * complex_h))

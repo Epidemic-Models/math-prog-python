@@ -211,6 +211,14 @@ class Complex:
         else:
             raise Exception("The right hand operand must be either an integer, or a float or a Complex number.")
 
+    def __rtruediv__(self, other: Union[float, int]) -> Complex:
+        """
+        Returns the quotient of a realm number and a complex numbers
+        :param Union[float, int] other: a real number
+        :return Complex: returns the quotient of a real number and a complex number
+        """
+        return Complex(re=float(other)) / self
+
     def __pow__(self, n: int) -> Complex:
         """
         Returns the integer power of a complex number
