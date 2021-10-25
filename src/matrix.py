@@ -61,7 +61,7 @@ class Matrix:
             else:
                 raise Exception("The matrices are not compatible")
         else:
-            raise Exception("The given ")
+            raise Exception("The other object is not a matrix ")
 
     def __eq__(self, other: Matrix) -> bool:
         pass
