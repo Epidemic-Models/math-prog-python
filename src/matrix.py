@@ -39,6 +39,40 @@ class Matrix:
         """
         return self.__data
 
+    @staticmethod
+    def check_input_data(data: list) -> None:
+        # Check whether the input is a list
+        if isinstance(data, list):
+            n_cols = None
+            for row in data:
+                # Check whether all elements of the list are list
+                if isinstance(row, list):
+                    # First row
+                    if n_cols is None:
+                        # Check whether the first row is empty
+                        if len(row) > 0:
+                            n_cols = len(row)
+                        else:
+                            raise Exception("First row of the input data is empty.")
+                    # All rows from the second row
+                    else:
+                        # Check whether all rows have the same size
+                        if n_cols == len(row):
+                            n_cols = len(row)
+                        else:
+                            raise Exception("The input data has rows with different length.")
+
+                    for elem in row:
+                        # Check whether all elements in the row is a number
+                        if isinstance(elem, int) or isinstance(elem, float):
+                            pass
+                        else:
+                            raise Exception("The input data has a non-number element.")
+                else:
+                    raise Exception("The input consist of an element which is not a list.")
+        else:
+            raise Exception("The input data is not a list.")
+
     def __str__(self) -> str:
         """
         Converts a matrix into string format
@@ -49,6 +83,20 @@ class Matrix:
             result += str(row)
             result += "\n"
         return result
+
+    def __eq__(self, other: Matrix) -> bool:
+        """
+        Determines the equality of two matrices
+        :param Matrix other: the other matrix
+        :return bool: True if and only if the left-hand and the right-hand operand are equal
+        """
+        if isinstance(other, Matrix):
+            if self.n_rows == other.n_rows and self.n_cols == other.n_cols:
+                for idx_1 in range(0, self.n_rows):
+                    for idx_2 in range(0, self.n_cols):
+                        return self.__data[idx_1][idx_2] == other.data[idx_1][idx_2]
+        else:
+            raise Exception("The right hand operand must be a matrix")
 
     def __matmul__(self, other: Matrix) -> Matrix:
         """
@@ -125,20 +173,6 @@ class Matrix:
         else:
             raise Exception("The other object is not a matrix.")
 
-    def __eq__(self, other: Matrix) -> bool:
-        """
-        Determines the equality of two matrices
-        :param Matrix other: the other matrix
-        :return bool: True if and only if the left-hand and the right-hand operand are equal
-        """
-        if isinstance(other, Matrix):
-            if self.n_rows == other.n_rows and self.n_cols == other.n_cols:
-                for idx_1 in range(0, self.n_rows):
-                    for idx_2 in range(0, self.n_cols):
-                        return self.__data[idx_1][idx_2] == other.data[idx_1][idx_2]
-        else:
-            raise Exception("The right hand operand must be a matrix")
-
     def get_transpose(self) -> Matrix:
         """
         Returns the transpose of a matrix
@@ -152,40 +186,6 @@ class Matrix:
                 temp_row.append(elem)
             result.append(temp_row)
         return result
-
-    @staticmethod
-    def check_input_data(data: list) -> None:
-        # Check whether the input is a list
-        if isinstance(data, list):
-            n_cols = None
-            for row in data:
-                # Check whether all elements of the list are list
-                if isinstance(row, list):
-                    # First row
-                    if n_cols is None:
-                        # Check whether the first row is empty
-                        if len(row) > 0:
-                            n_cols = len(row)
-                        else:
-                            raise Exception("First row of the input data is empty.")
-                    # All rows from the second row
-                    else:
-                        # Check whether all rows have the same size
-                        if n_cols == len(row):
-                            n_cols = len(row)
-                        else:
-                            raise Exception("The input data has rows with different length.")
-
-                    for elem in row:
-                        # Check whether all elements in the row is a number
-                        if isinstance(elem, int) or isinstance(elem, float):
-                            pass
-                        else:
-                            raise Exception("The input data has a non-number element.")
-                else:
-                    raise Exception("The input consist of an element which is not a list.")
-        else:
-            raise Exception("The input data is not a list.")
 
 
 def main() -> None:
