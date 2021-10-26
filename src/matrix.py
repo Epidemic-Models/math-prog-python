@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import Union
 
 
 class Matrix:
@@ -74,6 +75,14 @@ class Matrix:
         else:
             raise Exception("The given multiplier is not a matrix.")
 
+    def __rmatmul__(self, other: Union[float, int]) -> Matrix:
+        """
+        Returns the element wise product of a matrix with a scalar
+        :param Union[float, int] other: a scalar
+        :return: the element wise product of a matrix with a scalar
+        """
+        return self @ other
+
     def __add__(self, other: Matrix) -> Matrix:
         """
         Returns the sum of two matrices of equal size
@@ -130,6 +139,20 @@ class Matrix:
         else:
             raise Exception("The right hand operand must be a matrix")
 
+    def get_transpose(self) -> Matrix:
+        """
+        Returns the transpose of a matrix
+        :return Matrix: transpose of a matrix
+        """
+        result = []
+        for idx_1 in range(0, self.n_cols):
+            temp_row = []
+            for idx_2 in range(0, self.n_rows):
+                elem = self.data[idx_2][idx_1]
+                temp_row.append(elem)
+            result.append(temp_row)
+        return result
+
     @staticmethod
     def check_input_data(data: list) -> None:
         # Check whether the input is a list
@@ -170,6 +193,8 @@ def main() -> None:
     b = Matrix(data=[[0, 1, 0], [-1, 1, -1]])
     c = Matrix(data=[[1, 1], [13, 4]])
     d = Matrix(data=[[1, 2], [3, 4]])
+    e = Matrix(data=[[0, 1, 0], [-1, 1, -1], [1, 4, 2], [0, 3, -2]])
+    real_1 = 2
     print("Matrix a: \n", a)
     print("a * b: \n", a @ b)
     print("a + c: \n", a + c)
@@ -177,6 +202,10 @@ def main() -> None:
     print(str(a), " \n")
     print(a.data, " \n")
     print(a == d, " \n")
+    print("Transpose of a: ", a.get_transpose(), " \n")
+    print("Transpose of b: ", b.get_transpose(), " \n")
+    print("Transpose of e: ", e.get_transpose(), " \n")
+    print("real_1 * b: ", real_1 @ b)
     print("a + b: ", a + b)
 
 
