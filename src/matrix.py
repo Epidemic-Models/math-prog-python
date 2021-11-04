@@ -194,31 +194,6 @@ class Matrix:
             result.append(temp_row)
         return Matrix(data=result)
 
-    @property
-    def determinant(self) -> float:
-        """
-        Returns the determinant of a matrix
-        :float return: determinant of a matrix
-        """
-        if self.n_rows != self.n_cols:
-            raise Exception("The given matrix is not a square matrix.")
-        val = 0
-        for idx_1 in range(0, self.n_rows):
-            for idx_2 in range(0, self.n_cols):
-                if self.__data[idx_1][idx_2] == 0:
-                    val = 0
-        if self.__n_rows == 2 and self.__n_cols == 2:
-            val = self.__data[0][0] * self.__data[1][1] - self.__data[1][0] * self.__data[0][1]
-        else:
-            for idx_1 in range(0, self.n_rows):
-                sub_matrix = self.__data[1:]
-                for idx_2 in range(0, len(sub_matrix)):
-                    sub_matrix[idx_2] = sub_matrix[idx_2][0:idx_1] + sub_matrix[idx_2][idx_1 + 1:]
-                    sign = (-1) ** (idx_1 % 2)
-                    sub_det = determinant_recursive(sub_matrix)
-                    val += sign * self.__data[0][idx_1] * sub_det
-        return val
-
 
 def main() -> None:
     a = Matrix(data=[[1, 2], [3, 4]])
@@ -240,10 +215,6 @@ def main() -> None:
     print("Transpose of b: ", b.get_transpose(), " \n")
     print("Transpose of e: ", e.get_transpose(), " \n")
     print("real_1 * b:  \n ", real_1 @ b, " \n")
-    print("det(a) :  \n ", a.determinant, " \n")
-    print("det(f) :  \n ", f.determinant, " \n")
-    print("det(g) :  \n ", g.determinant, " \n")
-    print("det(b) :  \n ", b.determinant, " \n")
     print("b * real_1 :  \n ", b @  real_1, " \n")
     print("a + b: \n ", a + b)
 
