@@ -4,8 +4,8 @@ import numpy as np
 
 
 def main():
-    #numpy_fundamentals()
-    #numpy_basics()
+    # numpy_fundamentals()
+    # numpy_basics()
     numpy_broadcasting()
 
 
@@ -33,7 +33,7 @@ def numpy_basics():
     matrix_np = np.ones((1000, 1000))
     end = time.time()
     print("np.ones: ", end - start)
-    
+
     def two_loops(matrix):
         result = []
         for row in matrix:
@@ -64,6 +64,10 @@ def numpy_basics():
 
 
 def numpy_broadcasting():
+    # Exercise:
+    # Given two sets of N-dimensional vectors U and V.
+    # Calculate the Euclidean distance d(u, v) for all u in U and v in V.
+    # Output: |U| * |V| matrix with distance values.
     num_u = 1000
     num_v = 100
 
@@ -71,6 +75,7 @@ def numpy_broadcasting():
     mtx_v = np.random.random((num_v, 32 * 32))
 
     result_two_loops = np.zeros((num_u, num_v))
+    result_one_loop = np.zeros((num_u, num_v))
 
     start = time.time()
     for i in range(num_u):
@@ -78,6 +83,20 @@ def numpy_broadcasting():
             result_two_loops[i, j] = np.sqrt(np.sum((mtx_u[i] - mtx_v[j]) ** 2))
     end = time.time()
     print("Two loops: ", end - start)
+
+    start = time.time()
+    for i in range(num_v):
+        result_one_loop[:, i] = np.sqrt(np.sum((mtx_v[i] - mtx_u) ** 2, axis=1))
+    end = time.time()
+    print("One loop: ", end - start)
+
+    start = time.time()
+    u2 = np.sum(mtx_u ** 2, axis=1, keepdims=True)  # shape: (num_u, 1)
+    v2 = np.sum(mtx_v ** 2, axis=1)  # shape: (num_v, )
+    uv = mtx_u @ mtx_v.T  # shape: (num_u, num_v)
+    # (num_u, 1) + (num_u, num_v) = (num_u, num_v) -> (num_u, num_v) + (num_v, ) = (num_u, num_v)
+    result = np.sqrt(u2 - 2 * uv + v2)
+    print("No loop: ", end - start)
 
 
 if __name__ == "__main__":
