@@ -21,7 +21,7 @@ def euclidean_distance(u, v):
 def main():
     u = np.array([[1, 4, -3], [9, 5, 12], [5, -1, 3]])
     v = np.array([[1, 2, 3], [8, -5, 7]])
-    print("u * v: ", euclidean_distance(u, v))
+    print("u * v: \n", euclidean_distance(u, v))
 
 
 if __name__ == "__main__":
