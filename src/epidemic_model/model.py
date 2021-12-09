@@ -1,3 +1,4 @@
+from mesa.datacollection import DataCollector
 from mesa.model import Model
 from mesa.space import MultiGrid
 from mesa.time import RandomActivation
@@ -29,5 +30,16 @@ class EpidemicModel(Model):
         agent_to_infect = self.random.choice(self.schedule.agents)
         agent_to_infect.state = "I"
 
+        # Create datacollecter
+        self.data_collector = DataCollector(
+            model_reporters={
+                "Susceptibles": sem.agent.susc,
+                "Infecteds": sem.agent.inf,
+                "Recovereds": sem.agent.rec
+            }
+        )
+        self.data_collector.collect(model=self)
+
     def step(self):
         self.schedule.step()
+        self.data_collector.collect(model=self)
